@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property of Chaynika — Site Forged in Progress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Metamorphous&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-moss: #0c140f;
+    --forest: #14231a;
+    --fog: #b9c4b4;
+    --bone: #d9d3c2;
+    --moss-glow: #7fa663;
+    --copper: #b6743f;
+    --blood: #7c2b23;
+    --rune: #93b884;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { height: 100%; }
+
+  body {
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(127,166,99,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 130%, #16281c 0%, var(--forest) 40%, var(--deep-moss) 100%);
+    background-attachment: fixed;
+    color: var(--fog);
+    font-family: 'Spectral', Georgia, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem 1.25rem 0;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* ---------- drifting mist ---------- */
+  .mist {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(60% 40% at 20% 80%, rgba(185,196,180,0.06), transparent 70%),
+      radial-gradient(50% 35% at 80% 70%, rgba(185,196,180,0.05), transparent 70%),
+      radial-gradient(70% 40% at 50% 90%, rgba(185,196,180,0.07), transparent 70%);
+    animation: drift 26s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    from { transform: translateX(-3%) translateY(0); }
+    to   { transform: translateX(3%) translateY(-2%); }
+  }
+
+  /* ---------- antler crest ---------- */
+  .crest {
+    position: relative;
+    z-index: 1;
+    width: clamp(140px, 34vw, 230px);
+    margin-bottom: 0.4rem;
+    filter: drop-shadow(0 0 14px rgba(127,166,99,0.25));
+  }
+
+  .content { position: relative; z-index: 1; max-width: 700px; }
+
+  .eyebrow {
+    font-family: 'MedievalSharp', cursive;
+    font-size: clamp(0.72rem, 2.2vw, 0.9rem);
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--rune);
+    margin-bottom: 1.1rem;
+  }
+
+  .title {
+    font-family: 'Metamorphous', 'MedievalSharp', serif;
+    font-size: clamp(2rem, 8vw, 4.4rem);
+    line-height: 1.02;
+    color: var(--bone);
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 22px rgba(127,166,99,0.30), 0 3px 0 rgba(0,0,0,0.4);
+    margin-bottom: 0.5rem;
+  }
+  .title .small {
+    display: block;
+    font-family: 'MedievalSharp', cursive;
+    font-size: clamp(0.9rem, 3vw, 1.3rem);
+    letter-spacing: 0.28em;
+    color: var(--copper);
+    margin-top: 0.6rem;
+  }
+
+  .yo {
+    font-size: clamp(1.05rem, 3vw, 1.35rem);
+    line-height: 1.75;
+    margin: 1.4rem auto 0;
+    max-width: 580px;
+  }
+  .yo em { color: var(--moss-glow); font-style: italic; }
+
+  /* ---------- equalizer ---------- */
+  .eq {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 5px;
+    height: 56px;
+    margin: 2.1rem auto 0.5rem;
+  }
+  .eq span {
+    width: 7px;
+    background: linear-gradient(180deg, var(--moss-glow), var(--copper));
+    border-radius: 2px;
+    animation: bounce 1.1s ease-in-out infinite;
+  }
+  .eq span:nth-child(1){ animation-delay: 0s;    height: 30%; }
+  .eq span:nth-child(2){ animation-delay: .18s;  height: 65%; }
+  .eq span:nth-child(3){ animation-delay: .35s;  height: 100%; }
+  .eq span:nth-child(4){ animation-delay: .12s;  height: 50%; }
+  .eq span:nth-child(5){ animation-delay: .48s;  height: 85%; }
+  .eq span:nth-child(6){ animation-delay: .28s;  height: 40%; }
+  .eq span:nth-child(7){ animation-delay: .05s;  height: 70%; }
+  @keyframes bounce {
+    0%,100% { transform: scaleY(0.35); }
+    50%     { transform: scaleY(1); }
+  }
+  .eq-caption {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    color: var(--rune);
+    text-transform: uppercase;
+  }
+
+  /* ---------- warning ---------- */
+  .warning {
+    border: 1px solid var(--blood);
+    border-left: 4px solid var(--blood);
+    border-radius: 3px;
+    padding: 1.1rem 1.4rem;
+    margin: 1.9rem auto 0;
+    max-width: 580px;
+    background: rgba(124,43,35,0.10);
+    font-size: clamp(0.95rem, 2.6vw, 1.08rem);
+    line-height: 1.8;
+  }
+  .warning strong {
+    display: block;
+    font-family: 'MedievalSharp', cursive;
+    color: var(--copper);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+    font-weight: 400;
+  }
+  .warning b { color: var(--bone); }
+
+  .fine-print {
+    color: #8a9585;
+    font-size: clamp(0.78rem, 2.2vw, 0.9rem);
+    line-height: 1.95;
+    margin-top: 1.6rem;
+    font-style: italic;
+  }
+
+  .runes {
+    margin-top: 2.4rem;
+    font-family: 'Metamorphous', serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.5em;
+    color: var(--rune);
+    opacity: 0.55;
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    margin-top: 2.4rem;
+    padding-bottom: 1.8rem;
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: #6f7a6a;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mist, .eq span { animation: none; }
+    .eq span { transform: scaleY(0.7); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="mist" aria-hidden="true"></div>
+
+  <!-- antler / horned crest -->
+  <svg class="crest" viewBox="0 0 240 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#93b884" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <!-- left antler -->
+      <path d="M120 140 C110 110 96 96 84 88 M96 100 C86 96 78 86 76 74 M100 96 C104 82 100 70 92 60 M84 88 C72 86 62 78 58 66 M84 88 C80 74 70 66 58 62"/>
+      <!-- right antler (mirror) -->
+      <path d="M120 140 C130 110 144 96 156 88 M144 100 C154 96 162 86 164 74 M140 96 C136 82 140 70 148 60 M156 88 C168 86 178 78 182 66 M156 88 C160 74 170 66 182 62"/>
+      <!-- center stem + triskele node -->
+      <path d="M120 140 L120 92"/>
+      <circle cx="120" cy="78" r="13"/>
+      <path d="M120 78 q10 -6 6 -14 M120 78 q-11 -3 -12 6 M120 78 q4 12 12 8" stroke-width="2.4"/>
+    </g>
+  </svg>
+
+  <main class="content">
+    <p class="eyebrow">The forge is lit &middot; the site is not finished</p>
+    <h1 class="title">
+      Under Construction
+      <span class="small">A song half-written</span>
+    </h1>
+
+    <p class="yo">
+      Yo, wanderers. The site isn't done yet. We're deep in the woods
+      tuning the hurdy-gurdy, arguing about the breakdown, and waiting
+      for the chai to reach the perfect temperature (this is the real
+      bottleneck). <em>Return when the drums call, and the kettle whistles.</em>
+    </p>
+
+    <div class="eq" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <p class="eq-caption">Now soundchecking &middot; volume: unholy &middot; caffeine: maximum</p>
+
+    <div class="warning" role="note">
+      <strong>&#9760; Heed the warning &#9760;</strong>
+      This domain is claimed, by ancient right and louder amps, as the
+      property of <b>Chaynika</b>.<br>
+      Trespassers shall be subjected to a nine-minute folk-metal epic.
+      With <b>three</b> flute solos. No skipping. And they will be served
+      the chai <b>without</b> sugar. You have been warned.
+    </div>
+
+    <p class="fine-print">
+      Warded by antlers, mead, and a wall of double-kick.<br>
+      Powered less by mead than by chai, honestly. The mead is for show.<br>
+      Bots, crawlers, and people who "don't really like screaming vocals":
+      the mosh pit is that way. Tea is by the amps.<br>
+      No hurdy-gurdy was harmed in the making of this page. Several cups of chai were consumed.
+    </p>
+
+    <div class="runes" aria-hidden="true">&#5792; &#5809; &#5787; &#5792; &#5809;</div>
+  </main>
+
+  <footer>Maintained &amp; supported by an avid tea drinker &middot; Sam Winchester</footer>
+
+</body>
+</html>
